@@ -1,0 +1,24 @@
+from IPython.display import clear_output
+getYearsNIH=[[1990,1991,1992,1993,1994], [1995,1996,1997,1998,1999], [2000,2001,2002,2003,2004], [2005, 2006, 2007, 2008, 2009], [2010,2011,2012,2013,2014],[2015,2016,2017,2018,2019],[2020,2021,2022]]
+getYearsPM=["1990:1994","1995:1999","2000:2004","2005:2009","2010:2014","2015:2019","2020:2022"]
+getYears_folder=["1990-1994","1995-1999","2000-2004","2005-2009","2010-2014","2015-2019","2020-2022"]
+destination="Controls Raw Data\\Publications and grants by 5 year bins\\"
+for i in range(len(getYearsNIH)):
+    path=os.path.join(cwd_Output,"NIH+PM_Data by year\\NIH+PM_Data_"+str(getYearsNIH[i][0])+".xlsx")
+
+    url_Pubmed_S3D='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=(cancer[ti]+AND+'+(getYearsPM[i])+'[dp]+AND+(\"+_gene_+\"[ti]))&retmax=20'
+    Out_DF_S3D=pd.DataFrame(columns=["Gene name","Pubs[title]","Pubs[title/abstract]", "Number of Grants[title/abstract]", "Award Amount[title/abstract]", "Number of Grants[title]", "Award Amount[title]", "Synonyms"])
+    PM_Tiab_raw=destination+"\\"+getYears_folder[i]+'\\NCBI PubMed\\Title and abstract data\\'
+    PM_Ti_raw=destination+"\\"+getYears_folder[i]+'\\NCBI PubMed\\Title only data\\'
+    NIH_Ti_raw=destination+"\\"+getYears_folder[i]+'\\NIH RePORTER\\Title only data\\'
+    NIH_Tiab_raw=destination+"\\"+getYears_folder[i]+'\\NIH RePORTER\\Title and abstract data\\'
+    paramsDefault = {
+                "criteria": {"fiscal_years":getYearsNIH[i],
+            "advanced_text_search": {"operator": "advanced", "search_field": "projecttitle,abstracttext","search_text": str("cancer AND ")}},
+                "include_fields": ["ApplId", "ProjectTitle", "AwardAmount", "DirectCostAmt", "IndirectCostAmt","ProjectStartDate", "ProjectEndDate"],"offset": 0, "limit": 500, }
+    Out_DF_S3D=AccessPubMed_and_Reporter_Master_function(Out_DF_S3D,url_Pubmed_S3D,paramsDefault,PM_Ti_raw,PM_Tiab_raw,NIH_Ti_raw,NIH_Tiab_raw)
+    Out_DF_S3D.index=Out_DF_S3D["Gene name"]
+    Out_DF_S3D=Out_DF_S3D.drop(columns="Gene name")
+    clear_output(wait=True)
+    print(path)
+    Out_DF_S3D.to_excel(path, engine="openpyxl")

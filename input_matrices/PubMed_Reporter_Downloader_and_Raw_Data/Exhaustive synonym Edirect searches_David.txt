@@ -1,0 +1,63 @@
+there are genes which have greater than 10k results, so we'll need to get those manually, the rest can be done programatically:
+need to use Edirect, which involves command line interfacing: https://www.ncbi.nlm.nih.gov/books/NBK179288/
+AKT1 -50551
+BAX -21429
+BCL2x2 TIAB -42227
+BCR -13539
+BRAF -17159
+BRCA1 -16843
+CDKN2A  -19093
+EGFR Title -11464 and TIAB -48283
+ERBB2 title -12817 and Tiab -45075
+KIT -22471
+KRAS -21232
+MAPK1 -30200
+MET -34115
+MTOR -21088
+MYC -23981
+PIK3CA -32612
+PTEN -13352
+ROS1 -27674
+STAT3 -14585
+TP53 title -17184 and tiab -78231
+Commonly-used fields for PubMed queries include:
+
+  [AFFL]    Affiliation           [LANG]    Language
+  [ALL]     All Fields            [MAJR]    MeSH Major Topic
+  [AUTH]    Author                [SUBH]    MeSH Subheading
+  [FAUT]    Author - First        [MESH]    MeSH Terms
+  [LAUT]    Author - Last         [PTYP]    Publication Type
+  [CRDT]    Date - Create         [WORD]    Text Word
+  [PDAT]    Date - Publication    [TITL]    Title
+  [FILT]    Filter                [TIAB]    Title/Abstract
+  [JOUR]    Journal               [UID]     UID
+example query: "Tager HS [AUTH] AND glucagon [TIAB]"
+
+once EDirect has been installed and the directory changed to its location(by default, this is the home directory), querying is as simple as copying and pasting the command to run in said directory
+Main query body(Change the TIAB in brackets to TITL if performing a  title based search):
+esearch -db pubmed -mindate 1990 -maxdate 2022/05/23 -query "(acute panmyelosis with myelofibrosis [TIAB] OR adamantinoma of long bones [TIAB] OR adenocarcinofibroma [TIAB] OR adenocarcinoid tumor [TIAB] OR adenocarcinoma [TIAB] OR adenosarcoma [TIAB] OR angiomyosarcoma [TIAB] OR askin tumor [TIAB] OR astroblastoma [TIAB] OR astrocytoma [TIAB] OR atypical carcinoid tumor [TIAB] OR atypical teratoid/rhabdoid tumor [TIAB] OR blastoma [TIAB] OR Cancer [TIAB] OR carcinofibroma [TIAB] OR carcinoid tumor [TIAB] OR carcinoma [TIAB] OR carcinosarcoma [TIAB] OR cholangiocarcinoma [TIAB] OR chondrosarcoma [TIAB] OR chordoma [TIAB] OR choriocarcinoma [TIAB] OR comedocarcinoma [TIAB] OR cystadenocarcinoma [TIAB] OR dermatofibrosarcoma [TIAB] OR Desmoplastic small round cell tumor [TIAB] OR dysgerminoma [TIAB] OR Enterochromaffin cell carcinoid [TIAB] OR ependymoma [TIAB] OR essential thrombocythemia [TIAB] OR fibroblastic reticular cell tumor [TIAB] OR fibromyxosarcoma [TIAB] OR fibrosarcoma [TIAB] OR ganglioneuroblastoma [TIAB] OR germ cell tumor [TIAB] OR germinoma [TIAB] OR glioblastoma [TIAB] OR glioma [TIAB] OR gliomatosis cerebri [TIAB] OR gliosarcoma [TIAB] OR glomangiosarcoma [TIAB] OR Goblet cell carcinoid [TIAB] OR heavy chain disease [TIAB] OR hemangiosarcoma [TIAB] OR hepatoblastoma [TIAB] OR Hodgkin granuloma [TIAB] OR immunoproliferative disease [TIAB] OR immunoproliferative small intestinal disease [TIAB] OR Klatskin tumor [TIAB] OR langerhans cell histiocytosis [TIAB] OR leiomyosarcoma [TIAB] OR leukemia [TIAB] OR leukemia/lymphoma [TIAB] OR Linitis plastica [TIAB] OR liposarcoma [TIAB] OR lymphangiosarcoma [TIAB] OR lymphoid neoplasms [TIAB] OR lymphoma [TIAB] OR malignant [TIAB] OR medulloblastoma [TIAB] OR medulloepithelioma [TIAB] OR medullomyoblastoma [TIAB] OR melanoma [TIAB] OR meningeal melanomatosis [TIAB] OR Meningeal sarcomatosis [TIAB] OR mesodermal mixed tumor [TIAB] OR mesothelioma [TIAB] OR microcarcinoma [TIAB] OR Mullerian mixed tumor [TIAB] OR mycosis fungoides [TIAB] OR myelodysplastic syndrome [TIAB] OR myeloid neoplasms [TIAB] OR myeloma [TIAB] OR myeloproliferative neoplasm [TIAB] OR myosarcoma [TIAB] OR myxosarcoma [TIAB] OR nephroblastoma [TIAB] OR neuroblastoma [TIAB] OR neuroepithelioma [TIAB] OR odontosarcoma [TIAB] OR Olfactory neurocytoma [TIAB] OR Olfactory neurogenic tumor [TIAB] OR oligodendroblastoma [TIAB] OR oligodendroglioma [TIAB] OR osteosarcoma [TIAB] OR Paget disease [TIAB] OR pancreatoblastoma [TIAB] OR Papillary Meningioma [TIAB] OR papillary tumor of the pineal region [TIAB] OR peripheral neuroectodermal tumor [TIAB] OR pineoblastoma [TIAB] OR plasmacytoma [TIAB] OR polar spongioblastoma [TIAB] OR polycythemia vera [TIAB] OR polyembryoma [TIAB] OR polymorphic post transplant lymphoproliferative disorder [TIAB] OR primary cutaneous CD30+ T-cell lymphoproliferative disease [TIAB] OR primary myelofibrosis [TIAB] OR primitive neuroectodermal tumor [TIAB] OR refractory anemia [TIAB] OR refractory cytopenia [TIAB] OR refractory neutropenia [TIAB] OR refractory thrombocytopenia [TIAB] OR retinoblastoma [TIAB] OR rhabdomyosarcoma [TIAB] OR sarcoma [TIAB] OR seminoma [TIAB] OR Sertoli-Leydig cell tumor, poorly differentiated [TIAB] OR sezary syndrome [TIAB] OR Spindle epithelial tumor with thymus-like element [TIAB] OR spongioneuroblastoma [TIAB] OR systemic ebv positive t-cell lymphoproliferative disease of childhood [TIAB] OR teratocarcinoma [TIAB] OR therapy related myeloid neoplasm [TIAB] OR Trichilemmocarcinoma [TIAB] OR trophoblastic tumor, epithelioid [TIAB] OR waldenstrom macroglobulinemia [TIAB] OR xanthoastrocytoma [TIAB] OR yolk sac tumor [TIAB]) AND (TP53 [TITL] OR BCC7 [TITL] OR LFS1 [TITL] OR P53 [TITL] OR TRP53 [TITL])"
+
+Gene queries(copy and paste these at the end of main query)
+AND (AKT1 [TIAB] OR AKT [TIAB] OR PKB [TIAB] OR PKB-ALPHA [TIAB] OR RAC [TIAB] OR RAC-ALPHA [TIAB])" 
+AND (BAX [TIAB] OR BCL2L4 [TIAB])" 
+AND (BCL2 [TIAB] OR Bcl-2 [TIAB])" 
+AND (BCR [TIAB] OR BCR1 [TIAB] OR D22S11 [TIAB] OR PHL [TIAB])" 
+AND (BRAF [TIAB] OR B-raf [TIAB] OR BRAF1 [TIAB] OR NS7 [TIAB] OR RAFB1 [TIAB])" 
+AND (BRCA1 [TIAB] OR BRCAI [TIAB] OR BRCC1 [TIAB] OR FANCS [TIAB] OR IRIS [TIAB] OR PSCP [TIAB])" 
+AND (CDKN2A [TIAB] OR ARF [TIAB] OR CDK4I [TIAB] OR CDKN2 [TIAB] OR CMM2 [TIAB] OR INK4 [TIAB] OR INK4A [TIAB] OR MLM [TIAB] OR MTS-1 [TIAB] OR MTS1 [TIAB] OR P14 [TIAB] OR P14ARF [TIAB] OR P16 [TIAB] OR P16-INK4A [TIAB] OR P16INK4 [TIAB] OR P16INK4A [TIAB] OR P19 [TIAB] OR P19ARF [TIAB] OR TP16 [TIAB])"
+AND (EGFR [TIAB] OR ERBB [TIAB] OR ERBB1 [TIAB] OR ERRP [TIAB] OR HER1 [TIAB] OR NISBD2 [TIAB] OR PIG61 [TIAB] OR mENA [TIAB])" 
+AND (EGFR [TITL] OR ERBB [TITL] OR ERBB1 [TITL] OR ERRP [TITL] OR HER1 [TITL] OR NISBD2 [TITL] OR PIG61 [TITL] OR mENA [TITL])" 
+AND (ERBB2 [TIAB] OR CD340 [TIAB] OR HER-2 [TIAB] OR HER-2/neu [TIAB] OR HER2 [TIAB] OR MLN 19 [TIAB] OR NEU [TIAB] OR NGL [TIAB] OR TKR1 [TIAB] OR ERBB-2 [TIAB])" 
+AND (ERBB2 [TITL] OR CD340 [TITL] OR HER-2 [TITL] OR HER-2/neu [TITL] OR HER2 [TITL] OR MLN 19 [TITL] OR NEU [TITL] OR NGL [TITL] OR TKR1 [TITL] OR ERBB-2 [TITL])" 
+AND (KIT [TIAB] OR C-Kit [TIAB] OR CD117 [TIAB] OR MASTC [TIAB] OR PBT [TIAB] OR SCFR [TIAB])" 
+AND (KRAS [TIAB] OR C-K-RAS [TIAB] OR C-K-RAS [TIAB] OR CFC2 [TIAB] OR K-RAS2A [TIAB] OR K-RAS2B [TIAB] OR K-RAS4A [TIAB] OR K-RAS4B [TIAB] OR K-Ras [TIAB] OR K-Ras 2 [TIAB] OR KI-RAS [TIAB] OR KRAS1 [TIAB] OR KRAS2 [TIAB] OR NS3 [TIAB] OR OES [TIAB] OR RALD [TIAB] OR RASK2 [TIAB] OR c-Ki-ras [TIAB] OR c-Ki-ras2 [TIAB])"
+AND (MAPK1 [TIAB] OR ERK [TIAB] OR ERK-2 [TIAB] OR ERK2 [TIAB] OR ERT1 [TIAB] OR MAPK2 [TIAB] OR NS13 [TIAB] OR P42MAPK [TIAB] OR PRKM1 [TIAB] OR PRKM2 [TIAB] OR p38 [TIAB] OR p40 [TIAB] OR p41 [TIAB] OR p41mapk [TIAB] OR p42-MAPK [TIAB])"
+AND (MET [TIAB] OR DFNB97 [TIAB] OR HGFR [TIAB] OR c-Met [TIAB])"
+AND (MTOR [TIAB] OR FRAP [TIAB] OR FRAP1 [TIAB] OR FRAP2 [TIAB] OR RAFT1 [TIAB] OR RAPT1 [TIAB] OR SKS [TIAB])"
+AND (MYC [TIAB] OR MRTL [TIAB] OR MYCC [TIAB] OR c-Myc [TIAB])"
+AND (PIK3CA [TIAB] OR CLAPO [TIAB] OR CLOVE [TIAB] OR MCAP [TIAB] OR MCMTC [TIAB] OR PI3K [TIAB] OR PI3K-alpha [TIAB] OR p110-alpha [TIAB] OR PI-3K [TIAB] OR PI3-K [TIAB])"
+AND (PTEN [TIAB] OR BZS [TIAB] OR GLM2 [TIAB] OR MHAM [TIAB] OR MMAC1 [TIAB] OR PTEN1 [TIAB] OR PTENbeta [TIAB] OR TEP1 [TIAB])"
+AND (ROS1 [TIAB] OR MCF3 [TIAB] OR ROS [TIAB] OR c-ros-1 [TIAB])"
+AND (STAT3 [TIAB] OR ADMIO [TIAB] OR APRF [TIAB] OR HIES [TIAB])"
+AND (TP53 [TIAB] OR BCC7 [TIAB] OR LFS1 [TIAB] OR P53 [TIAB] OR TRP53 [TIAB])"
+AND (TP53 [TITL] OR BCC7 [TITL] OR LFS1 [TITL] OR P53 [TITL] OR TRP53 [TITL])"
